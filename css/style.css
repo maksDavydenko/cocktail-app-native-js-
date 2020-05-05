@@ -142,3 +142,9 @@ input[type="checkbox"]{
     bottom: 0;
     background-color: #fff;
 }
+
+.filterChekedBlock{
+    display: flex;
+    overflow-x: scroll;
+    height: 30px;
+}

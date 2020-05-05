@@ -3,7 +3,9 @@ const filterBlock = document.querySelector('.filtres-block');
 const filterBtn = document.querySelector('.filter-btn');
 const backBtn = document.querySelector('.back-btn');
 const cocktailsList= document.querySelector('.cocktails-list');
-const filterApplyBtn = document.querySelector('.submit-btn')
+const filterApplyBtn = document.querySelector('.submit-btn');
+const filterChekedBlock = document.querySelector('.filterChekedBlock');
+
 const dataSource = [];
 
 let startPost = 0;
@@ -55,14 +57,18 @@ function displayCocktails(cocktails){
 
 }
 let listItems = '';
+let filtresItems = ''
 
-filteList.forEach((item,index) =>{
+filteList.forEach((item,i) =>{
+
         listItems +=
         `<li class='filter-item'><label for=${item}>${item}</label>
-    <input value=${item} id=${item} checked type="checkbox"/></li>`});
+    <input value=${item} id=${item} ${i === 0 ? checked="checked" : null} type="checkbox"/></li>`
+});
+
+
 
 cocktailsList.innerHTML = listItems;
-
 
 // toggle menu
 filterBtn.addEventListener('click', ()=>{
@@ -93,11 +99,14 @@ function getCheckedCheckBoxes() {
     let selectedCheckBoxes = document.querySelectorAll('input:checked');
     let checkedValues = Array.from(selectedCheckBoxes).map(cb => cb.value);
 
-    console.log(checkedValues);
 
+    checkedValues.forEach(item =>{
+        filtresItems += `<li>${item}</li>`
+    });
+    filterChekedBlock.innerHTML = filtresItems
 
-    return checkedValues;
 }
+getCheckedCheckBoxes();
 
 filterApplyBtn.addEventListener('click', ()=>{
     getCheckedCheckBoxes();
