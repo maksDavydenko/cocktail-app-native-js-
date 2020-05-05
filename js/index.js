@@ -12,38 +12,52 @@ function getCocktails() {
             console.log(`server has some problem ${response.status}`);
             return;
         }
-        response.json().then((data) =>{
+        response.json().then(function(data){
             displayCocktails(data.drinks);
+            (data.drinks).forEach(cocktail =>{
+                dataSource.push(cocktail);
+            })
         });
     }
 )
-    .catch((err) => {
+    .catch(function(err){
         console.log(`fetch err ${err}`);
     })
 }
 
 
-// getCocktails();
+getCocktails();
 
 const filteList = ['Ordinary Drink', 'Cocktail','Milk / Float / Shake','Other/Unknown','Cocoa','Shot','Coffee / Tea','Homemade Liqueur','Beer'];
 
-// function displayCocktails(cocktails){
-//     const cocktailsHtml = cocktails.map(item => {
-//         return (
-//             `<div class='cocktail-item'>
-//         <img width=100 height=100 src="${item.strDrinkThumb}" alt=''/>
-//          <p class='cocktail-item__text'>
-//          ${item.strDrink}
-//          </p>
-//          </div>`
-//         )
-//     })
-//     wrap.innerHTML = cocktailsHtml
-// }
-// const listItems = filteList.forEach((item,index) => `<li key={index} class='filter-item'><label for={index}>{item}</label>
-//     <input onChange={this.handleInputChange} value={index} id={index} type="checkbox"/></li>`);
-//
-// displayCocktails();
+
+let startPost = 0;
+let endPost = 6;
+function displayCocktails(cocktails){
+    let cocktailsHtml = '';
+
+    for(let i = startPost; i< endPost; i++){
+        cocktailsHtml += `<div class='cocktail-item'>
+        <img width=100 height=100 src="${cocktails[i].strDrinkThumb}" alt=''/>
+         <p class='cocktail-item__text'>
+         ${cocktails[i].strDrink}</p>
+         </div>`
+    }
+
+    wrap.innerHTML += cocktailsHtml
+
+    startPost += 4;
+    endPost += 4;
+
+}
+let listItems = '';
+
+    filteList.forEach((item,index) =>{
+        listItems +=
+        `<li class='filter-item'><label for={index}>{item}</label>
+    <input value={index} id={index} type="checkbox"/></li>`});
+
+
 
 filterBtn.addEventListener('click', ()=>{
     filterBlock.style.left = '0px'
@@ -52,15 +66,16 @@ filterBtn.addEventListener('click', ()=>{
 backBtn.addEventListener('click', ()=>{
     filterBlock.style.left = '999px'
 })
-// const cocktails = dataSource.forEach(item => {
-//     return (
-//         `<div class='cocktail-item'>
-//         <img width=100 height=100 src="${item.strDrinkThumb}" alt=''/>
-//         <p class='cocktail-item__text'>
-//         ${item.strDrink}
-//         </p>
-//         </div>`
-//
-// )
-//
 
+
+
+window.addEventListener('scroll', () => {
+    const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
+
+    console.log( { scrollTop, scrollHeight, clientHeight });
+
+    if(clientHeight + scrollTop >= scrollHeight - 5) {
+
+        displayCocktails(dataSource)
+    }
+});
