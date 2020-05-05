@@ -3,7 +3,11 @@ const filterBlock = document.querySelector('.filtres-block');
 const filterBtn = document.querySelector('.filter-btn');
 const backBtn = document.querySelector('.back-btn');
 const cocktailsList= document.querySelector('.cocktails-list');
+const filterApplyBtn = document.querySelector('.submit-btn')
 const dataSource = [];
+
+let startPost = 0;
+let endPost = 6;
 
 function getCocktails() {
      fetch('https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=Ordinary Drink')
@@ -32,8 +36,7 @@ getCocktails();
 const filteList = ['Ordinary Drink', 'Cocktail','Milk / Float / Shake','Other/Unknown','Cocoa','Shot','Coffee / Tea','Homemade Liqueur','Beer'];
 
 
-let startPost = 0;
-let endPost = 6;
+
 function displayCocktails(cocktails){
     let cocktailsHtml = '';
 
@@ -55,11 +58,13 @@ let listItems = '';
 
 filteList.forEach((item,index) =>{
         listItems +=
-        `<li class='filter-item'><label for=${index}>${item}</label>
-    <input value=${index} id=${index} checked type="checkbox"/></li>`});
+        `<li class='filter-item'><label for=${item}>${item}</label>
+    <input value=${item} id=${item} checked type="checkbox"/></li>`});
 
 cocktailsList.innerHTML = listItems;
 
+
+// toggle menu
 filterBtn.addEventListener('click', ()=>{
     filterBlock.style.left = '0px'
 })
@@ -68,7 +73,7 @@ backBtn.addEventListener('click', ()=>{
     filterBlock.style.left = '999px'
 })
 
-
+//infinity scroll
 
 window.addEventListener('scroll', () => {
     const { scrollTop, scrollHeight, clientHeight } = document.documentElement;
@@ -80,3 +85,20 @@ window.addEventListener('scroll', () => {
         displayCocktails(dataSource)
     }
 });
+
+
+// select checked value
+
+function getCheckedCheckBoxes() {
+    let selectedCheckBoxes = document.querySelectorAll('input:checked');
+    let checkedValues = Array.from(selectedCheckBoxes).map(cb => cb.value);
+
+    console.log(checkedValues);
+
+
+    return checkedValues;
+}
+
+filterApplyBtn.addEventListener('click', ()=>{
+    getCheckedCheckBoxes();
+})
