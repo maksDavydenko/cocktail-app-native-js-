@@ -37,6 +37,7 @@
 }
 
 .filtres-block{
+    overflow-x: hidden;
     position: absolute;
     left: 999px;
     top: 0;
@@ -51,7 +52,7 @@
     overflow-x: hidden;
 }
 .filter-item{
-    min-width: 414px;
+    /*min-width: 414px;*/
     padding: 30px;
     display: flex;
     justify-content: space-between;
@@ -82,11 +83,12 @@ input[type="checkbox"]{
 
 }
 .submit-btn{
+    margin: 0px 20px;
     padding: 17px;
     background-color: #000;
     color: #fff;
+    width: calc(100% - 40px);
     text-transform: uppercase;
-    width: 100%;
     border: none;
     font-style: normal;
     font-weight: bold;

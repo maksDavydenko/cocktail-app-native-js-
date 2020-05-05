@@ -2,6 +2,7 @@ const wrap = document.querySelector('.wrap');
 const filterBlock = document.querySelector('.filtres-block');
 const filterBtn = document.querySelector('.filter-btn');
 const backBtn = document.querySelector('.back-btn');
+const cocktailsList= document.querySelector('.cocktails-list');
 const dataSource = [];
 
 function getCocktails() {
@@ -52,12 +53,12 @@ function displayCocktails(cocktails){
 }
 let listItems = '';
 
-    filteList.forEach((item,index) =>{
+filteList.forEach((item,index) =>{
         listItems +=
-        `<li class='filter-item'><label for={index}>{item}</label>
-    <input value={index} id={index} type="checkbox"/></li>`});
+        `<li class='filter-item'><label for=${index}>${item}</label>
+    <input value=${index} id=${index} checked type="checkbox"/></li>`});
 
-
+cocktailsList.innerHTML = listItems;
 
 filterBtn.addEventListener('click', ()=>{
     filterBlock.style.left = '0px'
