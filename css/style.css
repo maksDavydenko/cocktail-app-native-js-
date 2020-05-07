@@ -86,6 +86,7 @@ input[type="checkbox"]{
 
 }
 .submit-btn{
+
     margin-top: auto;
     padding: 17px;
     background-color: #000;
@@ -130,14 +131,12 @@ input[type="checkbox"]{
     left: 0px;
 }
 
-.wrap{
-    /*padding: 20px;*/
-}
 .drink-wrap{
     position: relative;
 }
 
 .filtres-block{
+    overflow-y: hidden;
     position: absolute;
     top: 0;
     left: 999px;
@@ -174,6 +173,7 @@ input[type="checkbox"]{
 .filter-wrap{
     display: flex;
     flex-direction: column;
+    justify-content: space-between;
 }
 .toUp-btn img{
     transform: rotate(90deg);

@@ -79,11 +79,14 @@ cocktailsList.innerHTML = listItems;
 filterBtn.addEventListener('click', ()=>{
     filterBlock.style.left = '0px'
     nothigErr.style.display = 'none';
+    document.body.style.overflowY = 'hidden'
 
 })
 
 backBtn.addEventListener('click', ()=>{
     filterBlock.style.left = '999px';
+    document.body.style.overflowY = 'scroll'
+
 
 })
 
