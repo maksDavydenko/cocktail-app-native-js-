@@ -11,16 +11,16 @@
 <body>
 
 <div class="app">
-    <div class='drink-wrap'>
+    <div class='drink-wrap' id="up">
         <header class='header header_drinks'>
             <h2 class='header__title'>Drinks</h2>
-                <button class="header__btn filter-btn">
-                    <img src="./img/filter.svg" alt="filter"/>
-                </button>
+            <button class="header__btn filter-btn">
+                <img src="./img/filter.svg" alt="filter"/>
+            </button>
         </header>
+        <div class="container">
             <ul class="filterChekedBlock"></ul>
-        <div class="wrap">
-
+            <div class="wrap"></div>
         </div>
         <div class='filtres-block'>
             <header class="header header_filter">
@@ -29,11 +29,19 @@
                 </button>
                 <h2 class="header__title header__title_filter">Filters</h2>
             </header>
-            <ul class="cocktails-list">
-
-            </ul>
-            <button class="submit-btn" type="submit">apply</button>
+            <div class="container">
+                <div class="filter-wrap">
+                    <ul class="cocktails-list"></ul>
+                    <button class="submit-btn" type="submit">apply</button>
+                </div>
+            </div>
         </div>
+    </div>
+    <div class="toUp-btn-wrap">
+        <a class="toUp-btn" href="#up"><img src="./img/arrow.svg" alt=""></a>
+    </div>
+    <div class="nothing-err">
+        Nothing selected
     </div>
 </div>
 <script src="./js/index.js"></script>
