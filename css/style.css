@@ -187,3 +187,29 @@ input[type="checkbox"]{
     font-size: 25px;
     font-weight: bold;
 }
+
+
+.popUp{
+    display: none;
+    position: fixed;
+    top: 40%;
+    left: 50%;
+    max-width: 414px;
+    transform: translate(-50%, -50%);
+    background-color: chartreuse;
+
+}
+
+.close{
+    position: absolute;
+    top: -20px;
+    right: -20px;
+    width: 40px;
+    height: 40px;
+    z-index: 999;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 50%;
+    border: 2px solid #000;
+}
