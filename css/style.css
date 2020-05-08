@@ -167,7 +167,13 @@ input[type="checkbox"]{
     border-radius: 50%;
     background-color: rgba(0,0,0, .2);
     bottom: 30px;
-    left: 85%;
+    left: 75%;
+}
+
+@media screen and (min-width: 414px){
+    .toUp-btn {
+       left: 85%;
+    }
 }
 
 .filter-wrap{

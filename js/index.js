@@ -28,12 +28,8 @@ function getFilterArr(arr){
     (arr.drinks).forEach(item =>{
         filterList.push(item.strCategory);
     })
-
     growFilterList();
 }
-
-
-
 
 function getCocktails(checkedValue) {
     const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=';
