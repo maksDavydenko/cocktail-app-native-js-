@@ -6,6 +6,7 @@ const cocktailsList = document.querySelector('.cocktails-list');
 const filterApplyBtn = document.querySelector('.submit-btn');
 const filterChekedBlock = document.querySelector('.filterChekedBlock');
 const nothingErr = document.querySelector('.nothing-err')
+const toUpBtn = document.querySelector('.toUp-btn')
 const dataSource = [];
 
 let startPost = 0;
@@ -97,12 +98,15 @@ filterBtn.addEventListener('click', () => {
     filterBlock.style.left = '0px'
     nothingErr.style.display = 'none';
     document.body.style.overflowY = 'hidden'
-    popUp.style.display = 'none'
+    popUp.style.display = 'none';
+    toUpBtn.style.display = 'none';
 })
 
 backBtn.addEventListener('click', () => {
     filterBlock.style.left = '999px';
     document.body.style.overflowY = 'scroll'
+    toUpBtn.style.display = 'flex';
+
 })
 
 //infinity scroll
@@ -110,6 +114,7 @@ backBtn.addEventListener('click', () => {
 window.addEventListener('scroll', () => {
     const {scrollTop, scrollHeight, clientHeight} = document.documentElement;
     console.log({scrollTop, scrollHeight, clientHeight});
+
     if (clientHeight + scrollTop >= scrollHeight - 20) {
         displayCocktails(dataSource)
     }
@@ -141,18 +146,16 @@ filterApplyBtn.addEventListener('click', () => {
 })
 
 
-// wrap click
 const popUp = document.querySelector('.popUp');
-let closeBtn = null;
 
-
-wrap.addEventListener('click', () => {
+document.body.addEventListener('click', () => {
     let target = event.target;
 
     if (target.closest('div').classList.contains('cocktail-item')) {
         let block = target.closest('div')
         let outers = block.childNodes;
         let filterItem;
+
         outers.forEach((item, i) => {
             (outers[i].tagName === 'IMG') ? filterItem = outers[i] : null;
         })
@@ -161,11 +164,13 @@ wrap.addEventListener('click', () => {
 <p>${filterItem.alt}</p>
         <div class="close"><img src="./img/close-icon.svg" width="20" height="20" alt="x"></div>`
         popUp.style.display = 'block'
-        closeBtn = document.querySelector('.close');
-        console.log(closeBtn);
+        document.body.style.overflowY = 'hidden'
     }
 
-    console.log(target.closest('div').classList.contains('testClose'));
+    if(target.closest('div').classList.contains('close')){
+        popUp.style.display = 'none'
+        document.body.style.overflowY = 'scroll'
+    }
 })
 
 

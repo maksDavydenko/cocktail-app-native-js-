@@ -1,5 +1,5 @@
 
-*{
+* {
     padding: 0;
     margin: 0;
     box-sizing: border-box;
@@ -7,21 +7,24 @@
     scroll-behavior: smooth;
 
 }
-.app{
+
+.app {
     position: relative;
     border: 1px solid #000;
     max-width: 414px;
     margin: 0px auto;
 
 }
-.container{
+
+.container {
     padding: 0px 20px;
 }
 
-.wrap{
+.wrap {
     min-height: 100vh;
 }
-.header{
+
+.header {
     position: sticky;
     top: 0;
     padding: 20px;
@@ -30,17 +33,17 @@
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
 }
 
-.header_drinks{
+.header_drinks {
     justify-content: space-between;
 }
 
-.header__btn{
+.header__btn {
     background: transparent;
     border: none;
     cursor: pointer;
 }
 
-.filtres-block{
+.filtres-block {
     overflow-x: hidden;
     position: absolute;
     left: 999px;
@@ -51,18 +54,19 @@
     transition: .4s ease;
 }
 
-.drink-wrap{
+.drink-wrap {
     position: relative;
     overflow-x: hidden;
 }
-.filter-item{
+
+.filter-item {
     padding: 20px 0;
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 
-.filter-item label{
+.filter-item label {
     width: 100%;
     font-style: normal;
     font-weight: normal;
@@ -70,22 +74,24 @@
     line-height: 19px
 }
 
-input[type="checkbox"]{
+input[type="checkbox"] {
     background-color: transparent;
     width: 20px;
     height: 20px;
     border: none;
 }
-.header__title_filter{
+
+.header__title_filter {
     margin-left: 40px;
 }
 
-.header__title{
+.header__title {
     font-size: 24px;
     color: #000000;
 
 }
-.submit-btn{
+
+.submit-btn {
 
     margin-top: auto;
     padding: 17px;
@@ -100,13 +106,13 @@ input[type="checkbox"]{
     line-height: 19px;;
 }
 
-.cocktail-item{
+.cocktail-item {
     display: flex;
     align-items: center;
     margin-bottom: 40px;
 }
 
-.cocktail-item__text{
+.cocktail-item__text {
     margin-left: 20px;
     font-style: normal;
     font-weight: normal;
@@ -116,26 +122,26 @@ input[type="checkbox"]{
 }
 
 
-.header__drinks{
+.header__drinks {
     display: flex;
     justify-content: space-between;
 }
 
-.filter-menu{
+.filter-menu {
     position: absolute;
     left: -999px;
 }
 
-.filter-menu_active{
+.filter-menu_active {
     position: absolute;
     left: 0px;
 }
 
-.drink-wrap{
+.drink-wrap {
     position: relative;
 }
 
-.filtres-block{
+.filtres-block {
     overflow-y: hidden;
     position: absolute;
     top: 0;
@@ -145,19 +151,20 @@ input[type="checkbox"]{
     background-color: #fff;
 }
 
-.filterChekedBlock{
-   font-size: 20px;
+.filterChekedBlock {
+    font-size: 20px;
     padding: 20px 0px;
 }
 
-.toUp-btn-wrap{
+.toUp-btn-wrap {
     position: fixed;
     bottom: 0;
     left: 50%;
     transform: translate(-50%, 0);
     width: 414px;
 }
-.toUp-btn{
+
+.toUp-btn {
     position: relative;
     display: flex;
     justify-content: center;
@@ -165,48 +172,71 @@ input[type="checkbox"]{
     width: 50px;
     height: 50px;
     border-radius: 50%;
-    background-color: rgba(0,0,0, .2);
+    background-color: rgba(0, 0, 0, .2);
     bottom: 30px;
     left: 75%;
 }
 
-@media screen and (min-width: 414px){
+@media screen and (min-width: 414px) {
     .toUp-btn {
-       left: 85%;
+        left: 85%;
     }
 }
 
-.filter-wrap{
+.filter-wrap {
     display: flex;
     flex-direction: column;
     justify-content: space-between;
 }
-.toUp-btn img{
+
+.cocktails-list {
+    max-height: 70vh;
+    overflow-y: scroll;
+}
+
+.toUp-btn img {
     transform: rotate(90deg);
 }
 
-.nothing-err{
+.nothing-err {
     position: fixed;
     top: 50%;
     left: 50%;
+    text-align: center;
+    line-height: 50px;
     transform: translate(-50%, -50%);
-    font-size: 25px;
+    font-size: 30px;
     font-weight: bold;
 }
 
 
-.popUp{
+.popUp {
+    border: 2px solid #000;
     display: none;
     position: fixed;
-    top: 40%;
+    top: 50%;
     left: 50%;
-    max-width: 414px;
+    max-width: 360px;
+    width: 80%;
+    background-color: #fff;
     transform: translate(-50%, -50%);
-    background-color: chartreuse;
-
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn .4s;
 }
 
-.close{
+.popUp img {
+    display: block;
+    max-width: 100%;
+    object-fit: cover;
+}
+
+.popUp p {
+    padding: 40px 10px;
+    text-align: center;
+    font-size: 30px;
+}
+
+.close {
     position: absolute;
     top: -20px;
     right: -20px;
@@ -218,4 +248,23 @@ input[type="checkbox"]{
     align-items: center;
     border-radius: 50%;
     border: 2px solid #000;
+    background-color: #FFF;
+}
+
+@-webkit-keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
+}
+
+@keyframes fadeIn {
+    from {
+        opacity: 0;
+    }
+    to {
+        opacity: 1;
+    }
 }
