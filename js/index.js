@@ -7,10 +7,13 @@ const filterApplyBtn = document.querySelector('.submit-btn');
 const filterChekedBlock = document.querySelector('.filterChekedBlock');
 const nothingErr = document.querySelector('.nothing-err')
 const toUpBtn = document.querySelector('.toUp-btn')
-const dataSource = [];
+const popUp = document.querySelector('.popUp');
+
 
 let startPost = 0;
 let endPost = 6;
+
+const dataSource = [];
 const filterList = [];
 
 getFiltersItems();
@@ -35,6 +38,7 @@ function getFilterArr(arr){
 function getCocktails(checkedValue) {
     const url = 'https://www.thecocktaildb.com/api/json/v1/1/filter.php?c=';
     const filterArr = checkedValue.map(item => url + filterList[item]);
+
     //multi fetch
 
     Promise.all(filterArr.map(url =>
@@ -50,6 +54,7 @@ function cocktailArr(cocktailArr) {
             dataSource.push(item);
         })
     })
+
     displayCocktails(dataSource)
 }
 
@@ -62,7 +67,8 @@ function displayCocktails(cocktails) {
     } else {
         for (let i = startPost; i < endPost; i++) {
             cocktailsHtml += `<div class='cocktail-item'>
-        <img width=100 height=100 src="${cocktails[i].strDrinkThumb == undefined ? './img/no img.png' : cocktails[i].strDrinkThumb}" alt="${cocktails[i].strDrink}"/>
+        <img width=100 height=100 src="${cocktails[i].strDrinkThumb == undefined ? '' +
+                './img/no img.png' : cocktails[i].strDrinkThumb}" alt="${cocktails[i].strDrink}"/>
          <p class='cocktail-item__text'>
          ${cocktails[i].strDrink}</p>
          </div>`
@@ -85,7 +91,8 @@ function growFilterList() {
     filterList.forEach((item, index) => {
         listItems +=
             `<li class='filter-item'><label for=${item}>${item}</label>
-    <input value=${index} id=${item} ${index === 0 ? checked = 'checked' : ''} type="checkbox"/></li>`
+    <input value=${index} id=${item} ${index === 0 ? checked = 'checked' : ''} 
+    type="checkbox"/></li>`
     });
     cocktailsList.innerHTML = listItems;
     getCheckedCheckBoxes();
@@ -146,7 +153,6 @@ filterApplyBtn.addEventListener('click', () => {
 })
 
 
-const popUp = document.querySelector('.popUp');
 
 document.body.addEventListener('click', () => {
     let target = event.target;
@@ -163,6 +169,7 @@ document.body.addEventListener('click', () => {
         popUp.innerHTML = `<img src="${filterItem.src}" width="350" height="350" alt="${filterItem.alt}">
 <p>${filterItem.alt}</p>
         <div class="close"><img src="./img/close-icon.svg" width="20" height="20" alt="x"></div>`
+
         popUp.style.display = 'block'
         document.body.style.overflowY = 'hidden'
     }

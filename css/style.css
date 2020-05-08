@@ -192,7 +192,12 @@ input[type="checkbox"] {
 .cocktails-list {
     max-height: 70vh;
     overflow-y: scroll;
+    scroll-behavior: smooth;
+    scrollbar-width: none;
 }
+
+.cocktails-list::-webkit-scrollbar { width: 0; }
+.cocktails-list { -ms-overflow-style: none; }
 
 .toUp-btn img {
     transform: rotate(90deg);
